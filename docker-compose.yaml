@@ -1,0 +1,27 @@
+version: "3"
+services:
+  dnsmasq:
+    image: foxcris/docker-dnsmasq:dev
+    environment:
+      - DOCKER_DNSMASQ_DOMAIN=ad.rau.lan
+      - DOCKER_DNSMASQ_LISTENADDRESS=10.10.10.1
+      - DOCKER_DNSMASQ_DHCPRANGE_IPSTART=10.10.10.50
+      - DOCKER_DNSMASQ_DHCPRANGE_IPEND=10.10.10.200
+      - DOCKER_DNSMASQ_DHCPRANGE_NETMASK=255.255.255.0
+      - DOCKER_DNSMASQ_DHCPRANGE_LEASETIME=30m
+      - DOCKER_DNSMASQ_DEBUG=true
+      - DOCKER_DNSMASQ_DNS_PORT=0
+      - DOCKER_DNSMASQ_DHCP_GATEWAY=10.10.10.1
+      - DOCKER_DNSMASQ_DHCP_DNS=10.10.10.1
+#      - DOCKER_DNSMASQ_DHCP_NTP=10.10.10.1
+#      - DOCKER_DNSMASQ_INTERFACE=enp0s8
+#      - DOCKER_DNSMASQ_DNSFORWARD=192.168.3.1
+    volumes:
+#      - /home/user/docker-dnsmasq/data/etc/dnsmasq.conf:/etc/dnsmasq.conf:rw
+      - /home/user/docker-dnsmasq/data/etc/dnsmasq.d:/etc/dnsmasq.d
+      - /home/user/docker-dnsmasq/data/var/lib/misc:/var/lib/misc
+    restart: always
+    network_mode: "host"
+    cap_add:
+      - NET_ADMIN
+      
