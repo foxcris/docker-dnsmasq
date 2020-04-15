@@ -68,17 +68,17 @@ fi
 if [ "${DOCKER_DNSMASQ_DHCP_GATEWAY}" != "" ]
 then
   info "Configure: dhcp-option=3,${DOCKER_DNSMASQ_DHCP_GATEWAY}"
-  echo "dhcp-option=3,${DOCKER_DNSMASQ_DHCP_GATEWAY}" /etc/dnsmasq.d/dnsmasq.conf
+  echo "dhcp-option=3,${DOCKER_DNSMASQ_DHCP_GATEWAY}" >> /etc/dnsmasq.d/dnsmasq.conf
 fi
 if [ "${DOCKER_DNSMASQ_DHCP_DNS}" != "" ]
 then
   info "Configure: dhcp-option=6,${DOCKER_DNSMASQ_DHCP_DNS}"
-  echo "dhcp-option=6,${DOCKER_DNSMASQ_DHCP_DNS}" /etc/dnsmasq.d/dnsmasq.conf
+  echo "dhcp-option=6,${DOCKER_DNSMASQ_DHCP_DNS}" >> /etc/dnsmasq.d/dnsmasq.conf
 fi
 if [ "${DOCKER_DNSMASQ_DHCP_NTP}" != "" ]
 then
   info "Configure: dhcp-option=42,${DOCKER_DNSMASQ_DHCP_NTP}"
-  echo "dhcp-option=42,${DOCKER_DNSMASQ_DHCP_NTP}" /etc/dnsmasq.d/dnsmasq.conf
+  echo "dhcp-option=42,${DOCKER_DNSMASQ_DHCP_NTP}" >> /etc/dnsmasq.d/dnsmasq.conf
 fi
 
 /etc/init.d/dnsmasq start
